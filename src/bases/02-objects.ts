@@ -1,7 +1,19 @@
-import { IPokemon } from "../interface/pokemon.interface"
+import { IPokemon } from "../interface/pokemon.interface";
 
-export const pokemonIds = [1,2,3,4,5]
-export const pokemon: IPokemon = {
+export const pokemonIds = [1, 2, 3, 4, 5];
+
+export const bulbasaur: IPokemon = {
+  id: 1,
+  name: "Bulbasaur",
+};
+
+export const charmander: IPokemon = {
     id: 1,
-    name: 'Bulbasaur'
-}
+    name: "Charmander",
+  };
+
+export const pokemons: IPokemon[] = [];
+
+pokemons.push(bulbasaur, charmander);
+
+console.log('pokemons', pokemons)

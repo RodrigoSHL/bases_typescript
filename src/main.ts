@@ -1,7 +1,9 @@
 // import { age, name } from "./bases/01-types";
 // import { bulbasaur, pokemonIds } from "./bases/02-objects";
 // import { charmander } from "./bases/04-injections";
-import { charmander } from "./bases/05-decorators";
+// import { charmander } from "./bases/05-decorators";
+import { charmander } from "./bases/06-decorators2";
+
 import "./style.css";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;

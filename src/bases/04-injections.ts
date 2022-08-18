@@ -1,5 +1,9 @@
 import axios from "axios";
-import { PokeApiAdapter } from "../api/pokeApi.adapter";
+import {
+  HttpAdapter,
+  PokeApiAdapterAxios,
+  PokeApiAdapterFetch,
+} from "../api/pokeApi.adapter";
 import { IPokeapi, Move } from "../interface/pokeapi.interface";
 
 export class Pokemon {
@@ -11,7 +15,7 @@ export class Pokemon {
     public readonly id: number,
     public name: string,
     // Todo: inyectar dependencias
-    public http: PokeApiAdapter
+    public http: HttpAdapter
   ) {}
 
   scream() {
@@ -23,13 +27,16 @@ export class Pokemon {
   }
 
   async getMoves(): Promise<Move[]> {
-    const data = this.http.get("https://pokeapi.co/api/v2/pokemon/4");
-    return data;
+    const data = await this.http.get<IPokeapi>(
+      "https://pokeapi.co/api/v2/pokemon/4"
+    );
+    return data.moves;
   }
 }
 
-const pokeApi = new PokeApiAdapter();
+const pokeApiAxios = new PokeApiAdapterAxios();
+const pokeApiFetch = new PokeApiAdapterFetch();
 
-export const charmander = new Pokemon(4, "Charmander", pokeApi);
+export const charmander = new Pokemon(4, "Charmander", pokeApiAxios);
 
 charmander.getMoves();
